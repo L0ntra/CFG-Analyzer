@@ -53,6 +53,10 @@
 ## ask user if they would like to teast another string
 
 
+
+import readfile
+
+
 ## Linear linked list used for stack
 class lll:
   def __init__(self, data = None):
@@ -75,23 +79,81 @@ class lll:
       self.next_node.print_all()
     return None
 
-def main():
-  if input("Test?: ") == 'y':
-    head = lll()
-    i = 0
-    print("\n<< Pushing Stack >>")
-    while i < 10:
-      head = head.push(i)
-      print(i)
-      i = i +1
-    print("\n<< Stack Contents >>")
-    head.print_all(); print()
+def test():
+  head = lll()
+  i = 0
+  print("\n<< Pushing Stack >>")
+  while i < 10:
+    head = head.push(i)
+    print(i)
+    i = i +1
+  print("\n<< Stack Contents >>")
+  head.print_all(); print()
 
-    print("\n<< Popping Stack >>")
-    while head:
-      popped = head.pop()
-      head = popped[0]
-      print(popped[1])
+  print("\n<< Popping Stack >>")
+  while head:
+    popped = head.pop()
+    head = popped[0]
+    print(popped[1])
+  return
+
+
+def main():
+
+#  if input("Test?: ") == 'y':
+#    test()
+
+
+  
+  readfile.read_file('anbn.txt')
+
+
+  
+  grammer_name, grammer = readfile.read_file(input("File name for grammer: "))
+  verb = input("Verbouse Output? (y/n) ") == 'y'
+
+  while 1:
+    test_string = input('String to test: ')
+
+    ##Push the string on to it's own stack
+    input_string = lll()
+    for i in range(len(test_string)-1, -1 , -1): ## this is kinda strange...
+      input_string = input_string.push(test_string[i])
+
+    stack = lll()
+    stack = stack.push('S')
+  
+    if verb == True:
+      print('Test String | Stack')
+      input_string.print_all(); print('     ', end = ''); 
+      stack.print_all(); print()
+    while 1:
+      input_string, str_pop = input_string.pop()
+      stack, stk_pop = stack.pop()
+      s_result = None
+      if(stk_pop != str_pop):
+        s_result = grammer.search(stk_pop, str_pop)
+        if s_result:
+          for i in range(len(s_result)-1, 0, -1):#push all but first char
+            stack = stack.push(s_result[i])
+        else:
+          good = False ##String is not part of language
+          break
+      if(stk_pop == str_pop) and (str_pop == '$'):
+        good = True
+        break
+      if verb == True:
+        input_string.print_all(); print('     ', end = ''); stack.print_all(); print()
+
+    if good == True:
+      print(test_string + ' is in the language of ' + grammer_name)
+    else:
+      print(test_string + ' is NOT in the language of ' + grammer_name)
+    if input("Test another string? (y/n) ") != 'y':
+      break
+
+
+
 
 
 if __name__ == '__main__':

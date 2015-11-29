@@ -14,6 +14,13 @@ class g_lll:
     if self.next_node:
       self.next_node.print_all()
 
+  def search(self, var, term):
+    if(self.var == var) and (self.right[0] == term):
+      return self.right
+    if self.next_node:
+      return self.next_node.search(var, term)
+    return None
+
 
 def read_file(file_name):
   f = open(file_name)
@@ -31,7 +38,8 @@ def read_file(file_name):
     line = f.readline()
 #  head.print_all()
   f.close()
-  return head
+  return grammer_name, head
+
 
 def main():
   #print('anbn')

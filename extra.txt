@@ -1,0 +1,4 @@
+{a^n#b^mc^n | n, m > 0}
+S: aSc| #A
+A: bB
+B: bB| #
