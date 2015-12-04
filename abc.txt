@@ -1,0 +1,4 @@
+{(a^i)#(b^j)#(c^k)# | i = j and i, j, k > 0}
+S: aAb#cC
+A: aAb| #
+C: cC| #
