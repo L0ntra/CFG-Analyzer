@@ -1,0 +1,54 @@
+ab.txt  | Expected | Actual
+Test    | Result   | Result
+--------+----------+-------------------------
+aa#bb   | accept   | accept (parses full tree)
+a#bb    | reject   | reject
+aa#b    | reject   | reject
+aabb    | reject   | reject
+aa#bb#  | reject   | reject
+ab      | reject   | reject
+a#b#c#  | reject   | reject
+
+
+abc.txt    | Expected | Actual
+Test       | Result   | Result
+-----------+----------+-------------------------
+aa#bb#ccc# | accept   | accept (parses full tree)
+a#b#ccc#   | accept   | accept
+aaa#bbb##  | reject   | reject
+aa#bb#     | reject   | reject
+##ccc#     | reject   | reject
+aa#b#cc#   | reject   | reject
+a#bb#cc#   | reject   | reject
+abc        | reject   | reject
+###        | reject   | reject
+
+
+wwr.txt   | Expected | Actual
+Test      | Result   | Result
+----------+----------+---------
+1001#1001 | accept   | accept (parses full tree)
+1100#0011 | accept   | accept (parses full tree)
+101#101   | accept   | accept (parses full tree)
+#         | accept   | accept
+1#1       | accept   | accept
+0#0       | accept   | accept
+0#1       | reject   | reject
+1#0       | reject   | reject
+1001      | reject   | reject
+0110      | reject   | reject
+2#2       | reject   | reject
+
+
+extra.txt | Expected | Actual
+Test      | Result   | Result
+----------+----------+----------
+aa#bbb#cc | accept   | accept (parses full tree)
+a#bb#c    | accept   | accept (parses full tree)
+a#b#c     | accept   | accept
+a#bb#cc   | reject   | reject
+aa#b#c    | reject   | reject
+aa##cc    | reject   | reject
+#b#       | reject   | reject
+ab#b#c    | reject   | reject
+a#dd#c    | reject   | reject
