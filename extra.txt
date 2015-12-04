@@ -1,4 +1,5 @@
-{a^n#b^mc^n | n, m > 0}
-S: aSc| #A
-A: bB
-B: bB| #
+{a^n#b^m#c^n | n, m > 0}
+S: aAc
+A: aAc| #B
+B: bC
+C: bC| #

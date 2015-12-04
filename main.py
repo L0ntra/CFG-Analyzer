@@ -1,7 +1,5 @@
 ## CFG-Analyzer copyright (c) 2015 Gregory Gaston 
 ## MIT Liscense - See documentation at https://github/L0ntra/CFG-Analyzer
-##
-
 
 ## Grammer Rules:
 ## 1. All runes must have a term. as the first char on the right hand side
@@ -46,16 +44,9 @@
 ## Stack and string are empty : accept
 
 
-## OVERALL PROGRAM
-## Read in all grammers
-## read in a string from user
-## test string on all grammers and report pass fail for each
-## ask user if they would like to teast another string
-
 
 
 import readfile
-
 
 ## Linear linked list used for stack
 class lll:
@@ -103,13 +94,15 @@ def main():
 #  if input("Test?: ") == 'y':
 #    test()
 
+  accept = False
+  while not accept:
+    try:
+      grammer_name, grammer = readfile.read_file(input("File name for grammer: "))
+    except IOError:
+      print("Invalid filename")
+    else:
+     accept = True
 
-  
-  readfile.read_file('anbn.txt')
-
-
-  
-  grammer_name, grammer = readfile.read_file(input("File name for grammer: "))
   verb = input("Verbouse Output? (y/n) ") == 'y'
 
   while 1:
@@ -127,7 +120,7 @@ def main():
       print('Test String | Stack')
       input_string.print_all(); print('     ', end = ''); 
       stack.print_all(); print()
-    while 1:
+    while True:
       input_string, str_pop = input_string.pop()
       stack, stk_pop = stack.pop()
       s_result = None

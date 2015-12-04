@@ -1,3 +1,6 @@
+## Copyright (c) 20015 Gregory Gaston
+## MIT Liscense - See documentation at https://github/L0ntra/CFG-Analyzer
+
 class g_lll:
   ##creates a new node, also pushes if head given
   def __init__(self, var, right, head = None):
@@ -53,11 +56,3 @@ def main():
 
 if __name__ == '__main__':
   main()
-
-
-
-
-
-
-
-
